@@ -1,0 +1,288 @@
+==> Harness documentation
+./scripts/check.sh: line 11: /usr/local/bin/python3: Bad CPU type in executable
+==> Repository audit
+./scripts/check.sh: line 14: /usr/local/bin/python3: Bad CPU type in executable
+==> TypeScript (tsc)
+==> ESLint
+
+> AmazonClone@0.0.1 lint
+> eslint .
+
+
+/Users/franklinsamuvel/workspace/appworks/amazon-clone/e2e/testHarness.tsx
+  27:22  warning  Inline style: { flex: 1 }                                    react-native/no-inline-styles
+  28:24  warning  Inline style: { flexDirection: 'row', gap: 12, padding: 8 }  react-native/no-inline-styles
+
+/Users/franklinsamuvel/workspace/appworks/amazon-clone/src/navigation/RootNavigator.tsx
+  41:23  warning  Inline style: { padding: 24 }  react-native/no-inline-styles
+
+✖ 3 problems (0 errors, 3 warnings)
+
+==> Unit and regression tests
+
+> AmazonClone@0.0.1 test
+> jest --runInBand
+
+PASS e2e/shopping_quick_add.test.tsx
+  ● Console
+
+    console.error
+      An update to DiscoveryFeedSection inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      20 |         product,
+      21 |       );
+    > 22 |       dispatch(cartActions.clearPending(product.productId));
+         |       ^
+      23 |       if (result.ok) {
+      24 |         dispatch(cartActions.addOrMergeItem(result.item));
+      25 |         return {ok: true as const};
+
+      at node_modules/react-reconciler/cjs/react-reconciler.development.js:17864:19
+      at runWithFiberInDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:2663:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:17863:9)
+      at scheduleUpdateOnFiber (node_modules/react-reconciler/cjs/react-reconciler.development.js:15445:11)
+      at forceStoreRerender (node_modules/react-reconciler/cjs/react-reconciler.development.js:6163:24)
+      at Object.callback (node_modules/react-reconciler/cjs/react-reconciler.development.js:6148:11)
+      at callback (node_modules/react-redux/src/utils/Subscription.ts:29:20)
+      at callback (node_modules/react-redux/src/utils/batch.ts:3:3)
+      at Object.defaultNoopBatch [as notify] (node_modules/react-redux/src/utils/Subscription.ts:26:7)
+      at Object.notify [as notifyNestedSubs] (node_modules/react-redux/src/utils/Subscription.ts:124:15)
+      at onStateChange (node_modules/react-redux/src/utils/Subscription.ts:129:20)
+      at listener (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:113:69)
+      at node_modules/redux/src/createStore.ts:220:7
+          at Map.forEach (<anonymous>)
+      at Object.dispatch (node_modules/redux/src/createStore.ts:219:15)
+      at dispatch (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:146:24)
+      at next (node_modules/@reduxjs/toolkit/src/serializableStateInvariantMiddleware.ts:257:22)
+      at node_modules/redux-thunk/dist/cjs/redux-thunk.cjs:32:12
+      at next (node_modules/@reduxjs/toolkit/src/immutableStateInvariantMiddleware.ts:277:34)
+      at next (node_modules/@reduxjs/toolkit/src/actionCreatorInvariantMiddleware.ts:32:12)
+      at dispatch (src/hooks/useQuickAdd.ts:22:7)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+    console.error
+      An update to DiscoveryFeedSection inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      22 |       dispatch(cartActions.clearPending(product.productId));
+      23 |       if (result.ok) {
+    > 24 |         dispatch(cartActions.addOrMergeItem(result.item));
+         |         ^
+      25 |         return {ok: true as const};
+      26 |       }
+      27 |       dispatch(cartActions.setError(result.message));
+
+      at node_modules/react-reconciler/cjs/react-reconciler.development.js:17864:19
+      at runWithFiberInDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:2663:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:17863:9)
+      at scheduleUpdateOnFiber (node_modules/react-reconciler/cjs/react-reconciler.development.js:15445:11)
+      at forceStoreRerender (node_modules/react-reconciler/cjs/react-reconciler.development.js:6163:24)
+      at Object.callback (node_modules/react-reconciler/cjs/react-reconciler.development.js:6148:11)
+      at callback (node_modules/react-redux/src/utils/Subscription.ts:29:20)
+      at callback (node_modules/react-redux/src/utils/batch.ts:3:3)
+      at Object.defaultNoopBatch [as notify] (node_modules/react-redux/src/utils/Subscription.ts:26:7)
+      at Object.notify [as notifyNestedSubs] (node_modules/react-redux/src/utils/Subscription.ts:124:15)
+      at onStateChange (node_modules/react-redux/src/utils/Subscription.ts:129:20)
+      at listener (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:113:69)
+      at node_modules/redux/src/createStore.ts:220:7
+          at Map.forEach (<anonymous>)
+      at Object.dispatch (node_modules/redux/src/createStore.ts:219:15)
+      at dispatch (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:146:24)
+      at next (node_modules/@reduxjs/toolkit/src/serializableStateInvariantMiddleware.ts:257:22)
+      at node_modules/redux-thunk/dist/cjs/redux-thunk.cjs:32:12
+      at next (node_modules/@reduxjs/toolkit/src/immutableStateInvariantMiddleware.ts:277:34)
+      at next (node_modules/@reduxjs/toolkit/src/actionCreatorInvariantMiddleware.ts:32:12)
+      at dispatch (src/hooks/useQuickAdd.ts:24:9)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+    console.error
+      An update to DiscoveryFeedSection inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      20 |         product,
+      21 |       );
+    > 22 |       dispatch(cartActions.clearPending(product.productId));
+         |       ^
+      23 |       if (result.ok) {
+      24 |         dispatch(cartActions.addOrMergeItem(result.item));
+      25 |         return {ok: true as const};
+
+      at node_modules/react-reconciler/cjs/react-reconciler.development.js:17864:19
+      at runWithFiberInDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:2663:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:17863:9)
+      at scheduleUpdateOnFiber (node_modules/react-reconciler/cjs/react-reconciler.development.js:15445:11)
+      at forceStoreRerender (node_modules/react-reconciler/cjs/react-reconciler.development.js:6163:24)
+      at Object.callback (node_modules/react-reconciler/cjs/react-reconciler.development.js:6148:11)
+      at callback (node_modules/react-redux/src/utils/Subscription.ts:29:20)
+      at callback (node_modules/react-redux/src/utils/batch.ts:3:3)
+      at Object.defaultNoopBatch [as notify] (node_modules/react-redux/src/utils/Subscription.ts:26:7)
+      at Object.notify [as notifyNestedSubs] (node_modules/react-redux/src/utils/Subscription.ts:124:15)
+      at onStateChange (node_modules/react-redux/src/utils/Subscription.ts:129:20)
+      at listener (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:113:69)
+      at node_modules/redux/src/createStore.ts:220:7
+          at Map.forEach (<anonymous>)
+      at Object.dispatch (node_modules/redux/src/createStore.ts:219:15)
+      at dispatch (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:146:24)
+      at next (node_modules/@reduxjs/toolkit/src/serializableStateInvariantMiddleware.ts:257:22)
+      at node_modules/redux-thunk/dist/cjs/redux-thunk.cjs:32:12
+      at next (node_modules/@reduxjs/toolkit/src/immutableStateInvariantMiddleware.ts:277:34)
+      at next (node_modules/@reduxjs/toolkit/src/actionCreatorInvariantMiddleware.ts:32:12)
+      at dispatch (src/hooks/useQuickAdd.ts:22:7)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+    console.error
+      An update to DiscoveryFeedSection inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      25 |         return {ok: true as const};
+      26 |       }
+    > 27 |       dispatch(cartActions.setError(result.message));
+         |       ^
+      28 |       return {ok: false as const, message: result.message};
+      29 |     },
+      30 |     [dispatch],
+
+      at node_modules/react-reconciler/cjs/react-reconciler.development.js:17864:19
+      at runWithFiberInDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:2663:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:17863:9)
+      at scheduleUpdateOnFiber (node_modules/react-reconciler/cjs/react-reconciler.development.js:15445:11)
+      at forceStoreRerender (node_modules/react-reconciler/cjs/react-reconciler.development.js:6163:24)
+      at Object.callback (node_modules/react-reconciler/cjs/react-reconciler.development.js:6148:11)
+      at callback (node_modules/react-redux/src/utils/Subscription.ts:29:20)
+      at callback (node_modules/react-redux/src/utils/batch.ts:3:3)
+      at Object.defaultNoopBatch [as notify] (node_modules/react-redux/src/utils/Subscription.ts:26:7)
+      at Object.notify [as notifyNestedSubs] (node_modules/react-redux/src/utils/Subscription.ts:124:15)
+      at onStateChange (node_modules/react-redux/src/utils/Subscription.ts:129:20)
+      at listener (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:113:69)
+      at node_modules/redux/src/createStore.ts:220:7
+          at Map.forEach (<anonymous>)
+      at Object.dispatch (node_modules/redux/src/createStore.ts:219:15)
+      at dispatch (node_modules/@reduxjs/toolkit/src/autoBatchEnhancer.ts:146:24)
+      at next (node_modules/@reduxjs/toolkit/src/serializableStateInvariantMiddleware.ts:257:22)
+      at node_modules/redux-thunk/dist/cjs/redux-thunk.cjs:32:12
+      at next (node_modules/@reduxjs/toolkit/src/immutableStateInvariantMiddleware.ts:277:34)
+      at next (node_modules/@reduxjs/toolkit/src/actionCreatorInvariantMiddleware.ts:32:12)
+      at dispatch (src/hooks/useQuickAdd.ts:27:7)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+    console.error
+      An update to ShoppingTestHarness inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      39 |               cartStatusMessage={statusMessage}
+      40 |               onQuickAddSuccess={() => setStatusMessage(null)}
+    > 41 |               onQuickAddError={message => setStatusMessage(message)}
+         |                                           ^
+      42 |             />
+      43 |           ) : (
+      44 |             <CartScreen
+
+      at node_modules/react-reconciler/cjs/react-reconciler.development.js:17864:19
+      at runWithFiberInDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:2663:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-reconciler/cjs/react-reconciler.development.js:17863:9)
+      at scheduleUpdateOnFiber (node_modules/react-reconciler/cjs/react-reconciler.development.js:15445:11)
+      at dispatchSetStateInternal (node_modules/react-reconciler/cjs/react-reconciler.development.js:7016:13)
+      at dispatchSetState (node_modules/react-reconciler/cjs/react-reconciler.development.js:6973:7)
+      at setStatusMessage (e2e/testHarness.tsx:41:43)
+      at src/features/home/DiscoveryFeedSection.tsx:59:34
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+    console.error
+      You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
+
+      at popActScope (node_modules/react/cjs/react.development.js:630:17)
+      at node_modules/react/cjs/react.development.js:920:17
+
+    console.error
+      You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
+
+      at popActScope (node_modules/react/cjs/react.development.js:630:17)
+      at node_modules/react/cjs/react.development.js:920:17
+
+PASS __tests__/cartSlice.test.ts
+
+Test Suites: 2 passed, 2 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        1.77 s, estimated 2 s
+Ran all test suites.
+==> Visual compare self-test
+visual_compare self-test: passed
+Skip device visual capture (reference PNG not uploaded yet).
+==> Android debug assemble
+Downloading https://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+
+Exception in thread "main" java.io.IOException: Downloading from https://services.gradle.org/distributions/gradle-9.4.1-bin.zip failed: timeout (10000ms)
+	at org.gradle.wrapper.Install.forceFetch(SourceFile:4)
+	at org.gradle.wrapper.Install$1.call(SourceFile:8)
+	at org.gradle.wrapper.GradleWrapperMain.lambda$prepareWrapper$0(SourceFile:23)
+	at org.gradle.wrapper.GradleWrapperMain.main(SourceFile:2)
+Caused by: java.net.SocketTimeoutException: Connect timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:299)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:498)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:603)
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:378)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:189)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1242)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1128)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:175)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.followRedirect0(HttpURLConnection.java:2887)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.followRedirect(HttpURLConnection.java:2796)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1927)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1589)
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:529)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:308)
+	at org.gradle.wrapper.Install.forceFetch(SourceFile:2)
+	... 3 more

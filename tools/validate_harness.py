@@ -29,6 +29,8 @@ for name in REQUIRED:
         failures.append(f"Missing/empty: {name}")
 
 for md in ROOT.rglob("*.md"):
+    if "node_modules" in md.parts:
+        continue
     body = md.read_text(encoding="utf-8")
     for _label, target in re.findall(r"(?<!!)\[([^]\n]+)\]\(([^)]+)\)", body):
         target = target.split("#")[0].split("?")[0]

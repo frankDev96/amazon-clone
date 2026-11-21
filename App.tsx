@@ -18,7 +18,7 @@ function App(props: AppProps) {
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
-          <StatusBar barStyle="dark-content" backgroundColor="#F5D78E" />
+          <StatusBar barStyle="dark-content" />
           <RootNavigator
             launchProps={{
               visualTest: props.visualTest,

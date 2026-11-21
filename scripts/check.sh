@@ -5,20 +5,25 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 failed=0
 
+PYTHON_BIN="${PYTHON_BIN:-}"
+if [[ -z "$PYTHON_BIN" ]]; then
+  if [[ -x /usr/bin/python3 ]]; then
+    PYTHON_BIN=/usr/bin/python3
+  else
+    PYTHON_BIN="$(command -v python3)"
+  fi
+fi
+
 log() { echo "==> $*"; }
 
 log "Harness documentation"
-python3 tools/validate_harness.py || failed=1
+"$PYTHON_BIN" tools/validate_harness.py || failed=1
 
 log "Repository audit"
-python3 scripts/audit_repository.py || failed=1
+"$PYTHON_BIN" scripts/audit_repository.py || failed=1
 
 log "TypeScript (tsc)"
-if npx tsc --noEmit -p tsconfig.json; then
-  :
-else
-  failed=1
-fi
+npx tsc --noEmit -p tsconfig.json || failed=1
 
 log "ESLint"
 npm run lint || failed=1
@@ -47,10 +52,10 @@ else
 fi
 
 log "Android debug assemble"
-if [[ -n "${ANDROID_HOME:-}" ]] && [[ -x android/gradlew ]]; then
-  (cd android && ./gradlew assembleDebug) || failed=1
+if [[ "${RUN_ANDROID_ASSEMBLE:-0}" == "1" ]] && [[ -x android/gradlew ]]; then
+  (cd android && ./gradlew assembleDebug --no-daemon) || failed=1
 else
-  echo "Skip assembleDebug (set ANDROID_HOME or run on CI with JDK)."
+  echo "Skip assembleDebug (set RUN_ANDROID_ASSEMBLE=1 locally; CI runs assemble in android-build job)."
 fi
 
 exit "$failed"
