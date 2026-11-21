@@ -1,0 +1,6 @@
+---
+description: Amazon Clone RN agent rules
+alwaysApply: true
+---
+
+Read `AGENTS.md` and `docs/PRD.md`. PoC: Home + quick-add + cart. Run `./scripts/check.sh`. Visual work follows `docs/VISUAL_FIDELITY.md`. Do not edit `../water-sort-brain-master/`.

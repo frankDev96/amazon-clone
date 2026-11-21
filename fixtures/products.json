@@ -1,0 +1,26 @@
+[
+  {
+    "productId": "prod-discovery-001",
+    "title": "Wireless Earbuds Pro Max Edition",
+    "imageUrl": "https://placehold.co/400x400/e67e22/ffffff?text=Earbuds",
+    "price": 1299,
+    "mrp": 2999,
+    "discountPercent": 57,
+    "dealLabel": "Deal of the Day",
+    "primeEligible": true,
+    "deliveryLabel": "Tomorrow",
+    "cashbackLabel": "5% cashback",
+    "popularityLabel": "700+ bought in past month",
+    "defaultVariantId": "var-001-default"
+  },
+  {
+    "productId": "prod-grid-002",
+    "title": "Stainless Steel Lunch Box Set",
+    "imageUrl": "https://placehold.co/400x400/f1c40f/333333?text=Lunch",
+    "price": 449,
+    "mrp": 899,
+    "discountPercent": 50,
+    "dealLabel": "Limited deal",
+    "defaultVariantId": "var-002-default"
+  }
+]

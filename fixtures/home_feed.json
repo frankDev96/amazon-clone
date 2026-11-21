@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "handpicked-grid",
+      "type": "product_grid",
+      "title": "Handpicked deals for you",
+      "layout": { "columns": 2, "cardVariant": "price" },
+      "items": [{ "productId": "prod-grid-002" }]
+    },
+    {
+      "id": "discovery-feed",
+      "type": "discovery_feed",
+      "title": "Discover products for you",
+      "items": [{ "productId": "prod-discovery-001" }]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "canonical_size": [1080, 2400],
+  "logical_viewport": [412, 892],
+  "seed": 20261121,
+  "screens": {
+    "home_feed_top": {
+      "reference": "docs/screen_images/home_feed_top.png",
+      "settle_frames": 8,
+      "fixture": {
+        "screen": "home_feed_top",
+        "scrollOffset": 0
+      },
+      "normalization": {
+        "reference_rect": [0, 0, 1080, 2400],
+        "actual_rect": null,
+        "resize": "aspect_fit_with_exact_canvas"
+      },
+      "thresholds": {
+        "approval": "pending_reference_upload",
+        "ssim_min": 0.85,
+        "mean_abs_lab_delta_max": 12.0,
+        "edge_mismatch_ratio_max": 0.18
+      }
+    }
+  }
+}
